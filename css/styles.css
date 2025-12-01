@@ -651,6 +651,14 @@ p {
 
 .form-group {
     margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 .form-group input,
