@@ -63,35 +63,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission handling
-function handleFormSubmit(event) {
-    const form = event.target;
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-
-    // Show a message to the user that the form is being submitted
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
-
-    // Allow Formspree to handle the form submission completely
-    // Reset button state after a delay to allow for form submission
-    setTimeout(() => {
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }, 3000); // Delay of 3 seconds to allow for form submission
-}
-
+// Form submission UI feedback
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    // Handle successful form submission
-    const formAction = contactForm.getAttribute('action');
-    if (formAction && formAction.includes('formspree.io')) {
-        // Listen for form submission success
-        contactForm.addEventListener('submit', function(e) {
-            // Since Formspree handles the submission, we rely on their processing
-            // Optionally, we can add success feedback here if needed
-        });
-    }
+    contactForm.addEventListener('submit', function(e) {
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+
+        // Show a message to the user that the form is being submitted
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+
+        // Reset button state after a delay to allow for form submission
+        setTimeout(() => {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }, 3000);
+    });
 }
 
 // Add animation on scroll
