@@ -652,6 +652,17 @@ p {
     gap: 1.5rem;
 }
 
+/* Adjust form layout for multiple fields */
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
 .form-group {
     margin-bottom: 1rem;
     display: flex;

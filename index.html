@@ -205,11 +205,29 @@
                 </div>
                 <form class="contact-form" action="https://formspree.io/f/mgvgkyab" method="POST">
                     <div class="form-group">
-                        <label>Your email:</label>
+                        <label>Name:</label>
+                        <input type="text" name="name" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name:</label>
+                        <input type="text" name="corporate" placeholder="Your Company Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
                         <input type="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <label>Your message:</label>
+                        <label>Position for Hiring:</label>
+                        <select name="position" required>
+                            <option value="" disabled selected>Select a position</option>
+                            <option value="Strategic Planning">Strategic Planning</option>
+                            <option value="Media Planning">Media Planning</option>
+                            <option value="Hybrid Planning">Hybrid Planning</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message:</label>
                         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <!-- Hidden field to redirect to email client after successful submission -->
