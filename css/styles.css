@@ -261,6 +261,9 @@ p {
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
     animation: fadeInUp 1s ease 0.4s both;
+    color: white; /* Ensure text is white in all modes for visibility on the gradient */
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add subtle text shadow for better readability */
 }
 
 .hero-buttons {
