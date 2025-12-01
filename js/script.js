@@ -63,37 +63,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form validation and submission
+// Form submission handling
+function handleFormSubmit(event) {
+    const form = event.target;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+
+    // Show a message to the user that the form is being submitted
+    submitButton.textContent = 'Sending...';
+    submitButton.disabled = true;
+
+    // Allow Formspree to handle the form submission completely
+    // Reset button state after a delay to allow for form submission
+    setTimeout(() => {
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+    }, 3000); // Delay of 3 seconds to allow for form submission
+}
+
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Get form values
-        const name = this.querySelector('input[placeholder="Your Name"]').value;
-        const corporateName = this.querySelector('input[placeholder="Corporate Name"]').value;
-        const email = this.querySelector('input[placeholder="Your Email"]').value;
-        const positionType = this.querySelector('select').value;
-        const message = this.querySelector('textarea').value;
-
-        // Simple validation
-        if (!name || !corporateName || !email || !positionType || !message) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-
-        // In a real implementation, you would send the form data to a server
-        // For now, we'll just show a success message
-        alert('Thank you for your message! I will get back to you soon.');
-        this.reset();
-    });
+    // Handle successful form submission
+    const formAction = contactForm.getAttribute('action');
+    if (formAction && formAction.includes('formspree.io')) {
+        // Listen for form submission success
+        contactForm.addEventListener('submit', function(e) {
+            // Since Formspree handles the submission, we rely on their processing
+            // Optionally, we can add success feedback here if needed
+        });
+    }
 }
 
 // Add animation on scroll
